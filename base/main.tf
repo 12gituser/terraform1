@@ -120,5 +120,5 @@ resource "aws_autoscaling_group" "far" {
 }
 
 output "aws_isntance_public_dns"{
-    value = "${aws_instance.nginx.public.dns}"
+    value = "${aws_instance_public_dns}"
 }
