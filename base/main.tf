@@ -116,9 +116,3 @@ resource "aws_autoscaling_group" "far" {
     create_before_destroy = true
 
   }
-
-}
-
-output "aws_isntance_public_dns"{
-    value = "${aws_instance_public_dns}"
-}
