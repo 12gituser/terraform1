@@ -116,3 +116,4 @@ resource "aws_autoscaling_group" "far" {
     create_before_destroy = true
 
   }
+  }
