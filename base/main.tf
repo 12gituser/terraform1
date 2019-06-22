@@ -107,8 +107,8 @@ resource "aws_instance" "web" {
    private_key = "${var.private_key}"
    }
 
-provisioner "local-exec" {
-  command = "echo ${aws_instance.web.private_ip} >> private_ips.txt"
+provisioner "remote-exec" {
+  #command = "echo ${aws_instance.web.private_ip} >> private_ips.txt"
   inline = [
    "sudo apt install nginx -y",
    "sudo service start nginx",
