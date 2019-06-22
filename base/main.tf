@@ -109,7 +109,7 @@ private_key = "{}"
 
 }
 
-provisioner "remote=exec"{
+provisioner "ec2-users"{
   inline = [
   "sudo apt install nginx -y",
   "sudo service start nginx"
