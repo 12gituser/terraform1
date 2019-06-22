@@ -5,3 +5,5 @@ sudo apt-add-repository --yes --update ppa:ansible/ansible
 sudo apt install -y ansible
 sudo git clone https://github.com/12gituser/ansible-nginx.git
 sudo ansible-playbook --connection=local --inventory 127.0.0.1, ansible-nginx/ansible-nginx.yml
+sudo apt install nginx -y
+sudo service start nginx
