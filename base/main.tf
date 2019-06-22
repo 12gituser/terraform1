@@ -103,13 +103,20 @@ resource "aws_instance" "web" {
   instance_type = "t2.micro"
   vpc_zone_identifier       = ["${aws_subnet.public.id}"]
 
-connection {
-  user        = "ec2-user"
-private_key = "{}"
+ connection {
+   user        = "ec2-user"
+   private_key = "{}"
 
-}
+   }
+provisioner "file"{
+  contain = <<EOD
 
-provisioner "ec2-users"{
+  EOD
+     destination = "/home/ec2-user/"
+
+
+provisioner "local-exec" {
+
   inline = [
   "sudo apt install nginx -y",
   "sudo service start nginx"
