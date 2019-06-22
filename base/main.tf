@@ -111,7 +111,7 @@ private_key = "{}"
 
 provisioner "remote=exec"{
   inline = [
-  "sudo apt install nginx -y"
+  "sudo apt install nginx -y",
   "sudo service start nginx"
   ]
 
