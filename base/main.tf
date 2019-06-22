@@ -138,9 +138,9 @@ provisioner "local-exec" {
 #  launch_template {
 #    id      = "${aws_launch_template.far.id}"
 #    version = "$Latest"
-  #}
-  #lifecycle {
-#    create_before_destroy = true
+  }
+  lifecycle {
+  create_before_destroy = true
 
   }
   }
