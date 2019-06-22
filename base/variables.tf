@@ -8,4 +8,4 @@ variable "cidrs_subnet2" {}
 variable "cidrs" {
   type = "map"
 }
-variable "${file(/root/.ssh/faroo)}"
+variable "${file(var.public_key_path)}"
