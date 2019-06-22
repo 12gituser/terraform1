@@ -97,8 +97,6 @@ resource "aws_launch_template" "far" {
   user_data = "${base64encode(data.template_file.asg-template.rendered)}"
 }
 
-
-
 #autoscaling group for creating scaling infrastruce
 
 resource "aws_autoscaling_group" "far" {
@@ -115,8 +113,7 @@ resource "aws_autoscaling_group" "far" {
     version = "$Latest"
   }
   lifecycle {
-  create_before_destroy = true
+    create_before_destroy = true
 
-  }
   }
   }
