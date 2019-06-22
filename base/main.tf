@@ -97,6 +97,26 @@ resource "aws_launch_template" "far" {
   user_data = "${base64encode(data.template_file.asg-template.rendered)}"
 }
 
+#  INSTANCES #
+resource "aws_instance" "web" {
+  ami           = "${aws_launch_template.far.id}"
+  instance_type = "t2.micro"
+  vpc_zone_identifier       = ["${aws_subnet.public.id}"]
+
+connection {
+  user        = "ec2-user"
+private_key = "{}"
+
+}
+
+provisioner "remote=exec"{
+  inline = [
+  "sudo apt install nginx -y"
+  "sudo service start nginx"
+  ]
+
+}
+  }
 #autoscaling group for creating scaling infrastruce
 
 resource "aws_autoscaling_group" "far" {
