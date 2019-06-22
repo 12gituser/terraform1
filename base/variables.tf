@@ -8,4 +8,4 @@ variable "cidrs_subnet2" {}
 variable "cidrs" {
   type = "map"
 }
-
+variable "private_key"{}
