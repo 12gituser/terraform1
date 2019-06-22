@@ -111,7 +111,7 @@ provisioner "local-exec" {
   command = "echo ${aws_instance.web.private_ip} >> private_ips.txt"
   inline = [
    "sudo apt install nginx -y",
-   "sudo service start nginx"
+   "sudo service start nginx",
   ]
 }
 }
