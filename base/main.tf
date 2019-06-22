@@ -142,6 +142,6 @@ provisioner "local-exec" {
   #lifecycle {
 #    create_before_destroy = true
 
-#  }
+  }
   }
   }
