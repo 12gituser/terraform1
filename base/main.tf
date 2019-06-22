@@ -101,7 +101,7 @@ resource "aws_launch_template" "far" {
 resource "aws_instance" "web" {
   ami           = "${aws_launch_template.far.id}"
   instance_type = "t2.micro"
-  vpc_security_group_ids = ["${var.security_group_ids}"]
+  vpc_security_group_ids = ["${aws_security_group.public_sg.id}}"]
 
  connection {
    user        = "ec2-user"
