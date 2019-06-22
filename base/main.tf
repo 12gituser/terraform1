@@ -126,22 +126,22 @@ provisioner "local-exec" {
   }
 #autoscaling group for creating scaling infrastruce
 
-resource "aws_autoscaling_group" "far" {
-  name                      = "far-terraform-nginx"
-  max_size                  = 1
-  min_size                  = 1
-  health_check_grace_period = 300
-  health_check_type         = "EC2"
-  desired_capacity          = 1
-  force_delete              = true
-  vpc_zone_identifier       = ["${aws_subnet.public.id}"]
-  launch_template {
-    id      = "${aws_launch_template.far.id}"
-    version = "$Latest"
-  }
-  lifecycle {
-    create_before_destroy = true
+#resource "aws_autoscaling_group" "far" {
+#  name                      = "far-terraform-nginx"
+#  max_size                  = 1
+#  min_size                  = 1
+#  health_check_grace_period = 300
+#  health_check_type         = "EC2"
+#  desired_capacity          = 1
+#  force_delete              = true
+#  vpc_zone_identifier       = ["${aws_subnet.public.id}"]
+#  launch_template {
+#    id      = "${aws_launch_template.far.id}"
+#    version = "$Latest"
+  #}
+  #lifecycle {
+#    create_before_destroy = true
 
-  }
+#  }
   }
   }
