@@ -104,10 +104,10 @@ resource "aws_instance" "web" {
 
  connection {
    user        = "ec2-user"
-   private_key = "${var.private_key}"
+   public_key = "${var.public_key}"
    }
 
-provisioner "remote-exec" {
+provisioner "local-exec" {
   #command = "echo ${aws_instance.web.private_ip} >> private_ips.txt"
   inline = [
    "sudo apt install nginx -y",
