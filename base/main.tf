@@ -97,47 +97,22 @@ resource "aws_launch_template" "far" {
   user_data = "${base64encode(data.template_file.asg-template.rendered)}"
 }
 
-#  INSTANCES #
-resource "aws_instance" "web" {
-  ami           = "${aws_launch_template.far.id}"
-  instance_type = "t2.micro"
-  vpc_security_group_ids = ["${aws_security_group.public_sg.id}}"]
-
- connection {
-   user        = "ec2-user"
-   private_key = "{}"
-
-   }
-provisioner "file"{
-  contain = <<EOD
-
-  EOD
-     destination = "/home/ec2-user/"
 
 
-provisioner "local-exec" {
-
-  inline = [
-  "sudo apt install nginx -y",
-  "sudo service start nginx"
-  ]
-
-}
-  }
 #autoscaling group for creating scaling infrastruce
 
-#resource "aws_autoscaling_group" "far" {
-#  name                      = "far-terraform-nginx"
-#  max_size                  = 1
-#  min_size                  = 1
-#  health_check_grace_period = 300
-#  health_check_type         = "EC2"
-#  desired_capacity          = 1
-#  force_delete              = true
-#  vpc_zone_identifier       = ["${aws_subnet.public.id}"]
-#  launch_template {
-#    id      = "${aws_launch_template.far.id}"
-#    version = "$Latest"
+resource "aws_autoscaling_group" "far" {
+  name                      = "far-terraform-nginx"
+  max_size                  = 1
+  min_size                  = 1
+  health_check_grace_period = 300
+  health_check_type         = "EC2"
+  desired_capacity          = 1
+  force_delete              = true
+  vpc_zone_identifier       = ["${aws_subnet.public.id}"]
+  launch_template {
+    id      = "${aws_launch_template.far.id}"
+    version = "$Latest"
   }
   lifecycle {
   create_before_destroy = true
