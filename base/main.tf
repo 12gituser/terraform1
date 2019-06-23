@@ -98,23 +98,23 @@ resource "aws_launch_template" "far" {
 }
 
 #  INSTANCES #
-resource "aws_instance" "web" {
-  ami           = "${aws_launch_template.far.id}"
-  instance_type = "t2.micro"
+#resource "aws_instance" "web" {
+#  ami           = "${aws_launch_template.far.id}"
+#  instance_type = "t2.micro"
 
- connection {
+# connection {
    user        = "ec2-user"
    public_key = "${var.public_key}"
    }
 
-provisioner "local-exec" {
+#provisioner "local-exec" {
   #command = "echo ${aws_instance.web.private_ip} >> private_ips.txt"
   inline = [
    "sudo apt install nginx -y",
    "sudo service start nginx",
   ]
 }
-}
+#}
 
 
 #autoscaling group for creating scaling infrastruce
