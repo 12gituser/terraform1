@@ -1,3 +1,19 @@
+Skip to content
+
+Search or jump to…
+
+Pull requests
+Issues
+Marketplace
+Explore
+
+@12gituser
+Code  Issues 0  Pull requests 0  Projects 0  Wiki  Security  Pulse  Community
+farooq_challenge/terraform/base/main.tf
+@Far00qM Far00qM Update main.tf
+8470c4f 22 days ago
+122 lines (91 sloc)  2.48 KB
+
 #terraform vpc block
 resource "aws_vpc" "vpc" {
   cidr_block = "10.1.0.0/16"
@@ -97,26 +113,6 @@ resource "aws_launch_template" "far" {
   user_data = "${base64encode(data.template_file.asg-template.rendered)}"
 }
 
-#  INSTANCES #
-#resource "aws_instance" "web" {
-#  ami           = "${aws_launch_template.far.id}"
-#  instance_type = "t2.micro"
-
-# connection {
-   user        = "ec2-user"
-   public_key = "${var.public_key}"
-   }
-
-#provisioner "local-exec" {
-  #command = "echo ${aws_instance.web.private_ip} >> private_ips.txt"
-  inline = [
-   "sudo apt install nginx -y",
-   "sudo service start nginx",
-  ]
-}
-#}
-
-
 #autoscaling group for creating scaling infrastruce
 
 resource "aws_autoscaling_group" "far" {
@@ -136,4 +132,18 @@ resource "aws_autoscaling_group" "far" {
     create_before_destroy = true
 
   }
-  }
+
+}
+
+© 2019 GitHub, Inc.
+Terms
+Privacy
+Security
+Status
+Help
+Contact GitHub
+Pricing
+API
+Training
+Blog
+About
