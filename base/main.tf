@@ -1,18 +1,3 @@
-#Skip to content
-
-#Search or jump to…
-
-#Pull requests
-#Issues
-#Marketplace
-#Explore
-
-#@12gituser
-#Code  Issues 0  Pull requests 0  Projects 0  Wiki  Security  Pulse  Community
-#farooq_challenge/terraform/base/main.tf
-#@Far00qM Far00qM Update main.tf
-#8470c4f 22 days ago
-#122 lines (91 sloc)  2.48 KB
 
 #terraform vpc block
 resource "aws_vpc" "vpc" {
